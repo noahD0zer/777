@@ -1,24 +1,32 @@
-const symbols = ['❤️', '💎', '🍀', '7️⃣', '🍒'];
-let balance = 30; // Initial balance
+const symbols = ['❤️', '💎', '🍀', '7️', '🍒'];
+let balance = 20; // Initial balance
 
-function getRandomSymbol() { //symbol randomizer
+//Randomizer
+function getRandomSymbol() {
   return symbols[Math.floor(Math.random() * symbols.length)];
 }
+
+// Initialize net winnings
+let netWinnings = 0;
 
 function spinSlots() {
   if (balance >= 1) {
     balance -= 1; // Deduct $1 for each spin
-
+    
+    // Change item heading while spinning
+    const itemHeading = document.querySelector('.item-heading');
+    itemHeading.textContent = 'Hold yer horses...';
+    
     const spinDuration = 2000; // Time in milliseconds
     const updateInterval = 100; // Update interval in milliseconds
     const slotContainer1 = document.getElementById('slot1');
     const slotContainer2 = document.getElementById('slot2');
     const slotContainer3 = document.getElementById('slot3');
-    const itemHeading = document.querySelector('.item-heading');
-    
+    const forNowDisplay = document.querySelector('.fornow');
 
     let startTime = Date.now();
 
+    // Stop spinning slots
     function updateSlots() {
       const currentTime = Date.now();
       const elapsedTime = currentTime - startTime;
@@ -35,21 +43,33 @@ function spinSlots() {
         const finalSymbol2 = getRandomSymbol();
         const finalSymbol3 = getRandomSymbol();
 
+        // Record outcome
         slotContainer1.textContent = finalSymbol1;
         slotContainer2.textContent = finalSymbol2;
         slotContainer3.textContent = finalSymbol3;
 
         // Check if all symbols are the same
-        if (finalSymbol1 === finalSymbol2 && finalSymbol2 === finalSymbol3) {
-          balance += 10; // Win $10 for a match
-          itemHeading.textContent = 'Winner!!!';
+        const isWin = finalSymbol1 === finalSymbol2 && finalSymbol2 === finalSymbol3;
+        if (isWin) {
+          let winAmount = 10; // Base win amount
+          if (finalSymbol1 === '❤️') winAmount += 5; // Add $5
+          if (finalSymbol1 === '🍀') winAmount += 5; // Add $5 
+          if (finalSymbol1 === '💎') winAmount += 10; // Add $10 
+          if (finalSymbol1 === '7') winAmount += 15; // Add $15 
+          balance += winAmount;
+          itemHeading.textContent = `Winner!!! $${winAmount} win!`;
+          netWinnings += winAmount; // Add winnings to netWinnings
         } else {
           itemHeading.textContent = 'Try again pardner';
+          netWinnings -= 1; // Deduct spin cost from netWinnings
         }
 
         // Update balance display
         const balanceDisplay = document.querySelector('.balance');
         balanceDisplay.textContent = `$${balance}`;
+
+        // Update net winnings display
+        forNowDisplay.textContent = `$${netWinnings}`;
 
         console.log('Spin stopped with symbols:', finalSymbol1, finalSymbol2, finalSymbol3);
       }
@@ -58,9 +78,13 @@ function spinSlots() {
     updateSlots();
   } else {
     console.log('Insufficient balance to spin.');
+        // Change item heading while spinning
+    const itemHeading = document.querySelector('.item-heading');
+    itemHeading.textContent = 'Yer broke buster!';
   }
 }
 
+// Button click event listener
 document.addEventListener('DOMContentLoaded', () => {
   const spinButton = document.getElementById('large-spin-button');
   spinButton.addEventListener('click', () => spinSlots());

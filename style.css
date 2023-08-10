@@ -8,83 +8,138 @@
   }
   .title,
   .item-heading,
-  .item
-  .action-button
-  .balance {
+  .item,
+  .action-button,
+  .bank,
+  .winnings,
+  .balance,
+  .fornow,
+  .winguide  {
     font-family: 'Rye';
   }
   
   body, h1, div {
-      margin: 0;
-      padding: 0;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .overall {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 20px; 
+    padding: 20px; 
+    justify-content:center;
+    height: 100vh;
+    background-image: url('https://cdn.steamstatic.com/steamcommunity/public/images/items/1048100/78c83b1d327bfdf61bfd0978c85f9272eb651a43.jpg');
+    background-size: cover;
+    background-position: center; 
   }
   
   .container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh; /* Adjust container height */
-      background-image: url('https://cdn.steamstatic.com/steamcommunity/public/images/items/1048100/78c83b1d327bfdf61bfd0978c85f9272eb651a43.jpg');
-      background-size: cover; /* Adjust background size to cover the container */
-      background-position: center; /* Center the background image */
-      background-color: #f0f0f0;
-      font-family: Arial, sans-serif;
-      position: relative;
-      padding: 20px;
-      border 10px solid #777;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; 
+    width:500px;
+    font-family: Arial, sans-serif;
+    position: relative;
+    padding: 20px;
+    border 10px solid #777;
   }
   
   .title {
-      font-size: 40px;
-      margin-bottom: 20px;
-      position: absolute;
-      top: 10px;
-      color: white;
+    font-size: 40px;
+    margin-bottom: 20px;
+    position: absolute;
+    top: 10px;
+    color: white;
   }
   
   .item-heading {
-      font-size: 30px;
-      margin-bottom: 20px;
-      color: white;
+    font-size: 30px;
+    margin-bottom: 20px;
+    color: white;
   }
   
   .centered-items {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      margin-bottom: 20px;
-      border: 2px solid #333; 
-      padding: 20px; 
-      margin-top: 20px;
+    height: 165px;
+    width: 360px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 20px;
+    background-image: url('https://media3.giphy.com/media/CbwHvwZaf9PFFHSvif/giphy.gif?cid=ecf05e47zsafxos5shqwh9zrtjlbjj6ej4trm262d10y6l3p&ep=v1_gifs_search&rid=giphy.gif&ct=g');
+    background-position: 50%;
+    border: 1px; 
+    padding: 20px; 
+    margin-top: 20px;
+    padding-left: 30px;
+    border-radius: 10%;
   }
   
   .item {
-      padding: 10px 20px;
-      background-color: #ffffff;
-      border: 1px solid #ccc;
-      border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 75px;
+    height: 140px;
+    padding: 10px 20px;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 50px;
   }
   
   .action-button {
-      padding: 10px 20px;
-      font-size: 20px;
-      background-color: #b20101;
-      border: none;
-      border-radius: 4px;
-      color: #fff;
-      cursor: pointer;
-      margin-left: 30px;
-      font-family: 'Rye';
+    padding: 10px 20px;
+    font-size: 20px;
+    background-color: #b20101;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
   }
   
   .action-button:hover {
-      background-color: #06841f;
+    background-color: #06841f;
+  }
+    
+  .bank,
+  .winnings  {
+    text-align: center;
+    width: 100px;
+    height: 75px;
+    border: 1px solid rgba(0, 0, 0, .2);
+    padding: 15px;
+    margin-top: 10px;
+    font-size: 20px;
+    background-color: #000000;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    vertical-align: center;
   }
   
-  .balance {
+  .winguide  {
+    text-align: center;
+    width: 200px;
+    height: 300px;
+    margin-top: 40px;
+    margin-bottom: 0px;
+    padding: 15px;
+    font-size: 20px;
+    background-color: #000000;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+  }  
+    
+  .balance,
+  .fornow  {
     font-size: 30px;
     color: green;
-    background-color: black;
     font-family: 'Rye';
+    padding-top: 10px;
   }
